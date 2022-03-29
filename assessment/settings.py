@@ -26,7 +26,7 @@ SECRET_KEY = '@yn^@m0to42yasd-l@3g*us!02s-9x8q%bwva@18s=(bo+g2^r'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['plazajason-telexvelvet-2500.codio-box.uk', 'secret-plateau-57057.herokuapp.com/', 'localhost']
+ALLOWED_HOSTS = ['plazajason-telexvelvet-2500.codio-box.uk', 'secret-plateau-57057.herokuapp.com', 'localhost']
 
 
 # Application definition
