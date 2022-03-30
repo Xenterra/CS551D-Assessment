@@ -28,9 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['plazajason-telexvelvet-2500.codio-box.uk', 'secret-plateau-57057.herokuapp.com', 'localhost']
 
-
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
