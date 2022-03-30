@@ -8,5 +8,49 @@
 <body>
 <h1>University Search</h1> 
 
+<table><tr>
+<th><a href="/">Index Page</a></th>
+<th></th>
+<th><a href="/search">Search Games</a></th>
+<th></th>
+<th><a href="/selected">Select Game</a></th>
+</tr></table>
 
-</body></html>
+	<!-- Form for User entry to 'Search' through games list -->
+<form method="post">
+	<br>
+
+	<label for="criteria">Enter your search criteria: </label>
+	<input type="text" id="criteria" name="criteria" value = {{criteria}}>
+
+	<br>
+
+	<p>Please select what you would like to search using:</p>
+	<input type="radio" id="search" name="search" value="name" checked>
+	<label for="search">Game Name</label>
+	<input type="radio" id="search" name="search" value="developer">
+	<label for="search">Developer</label>
+	
+
+	<br>
+
+	<p>Please select what you would like to sort by:</p>
+	<input type="radio" id="ordering" name="ordering" value="name" checked>
+	<label for="ordering">Name</label>
+	<input type="radio" id="ordering" name="ordering" value="release_date">
+	<label for="ordering">Release Date</label>
+
+	<br>
+	
+	<input type="radio" id="asc_desc" name="asc_desc" value="ASC" checked>
+	<label for="asc_desc"><strong> Ascending</strong></label>
+	<input type="radio" id="asc_desc" name="asc_desc" value="DESC">
+	<label for="asc_desc"><strong> Descending </strong></label>
+
+	<br><br>
+
+	<input type="submit">
+</form>
+
+</body>
+</html>
