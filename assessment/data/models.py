@@ -18,13 +18,13 @@ class UniversityList(models.Model):
 
 class UniDetails(models.Model):
 	uniqueid = models.IntegerField(primary_key=True)
-	logo = models.CharField(max_length=30)
-	link = models.CharField(max_length=30)
+	logo = models.CharField(max_length=100)
+	link = models.CharField(max_length=100)
 	research_output = models.CharField(max_length=30)
 	student_faculty_ratio = models.CharField(max_length=30)
 	international_students = models.CharField(max_length=30)
 	size = models.CharField(max_length=30)
-	faculty_count = models.IntegerField()
+	faculty_count = models.CharField(max_length=30)
 	
 	class Meta:
 		db_table = "unidetails"

@@ -22,7 +22,8 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('search/', views.search, name='search'),
-    path('selected/', views.selected, name='selected'),
+    path('search/selected/', views.selected, name='selected'),
+    path('compare/', views.compare, name='compare'),
     path('tester/', views.tester, name='tester'),
     path('admin/', admin.site.urls),
 ]

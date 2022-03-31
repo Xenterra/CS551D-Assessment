@@ -13,7 +13,7 @@
 <th></th>
 <th><a href="/search">Search University</a></th>
 <th></th>
-<th><a href="/selected">Compare University</a></th>
+<th><a href="/compare">Compare University</a></th>
 </tr></table>
 
 <form action = "" method = "POST">
@@ -39,6 +39,11 @@
 		<th>ID</th>
 		<th>Name</th>
 		<th>Score</th>
+		<th>Country</th>
+		<th>City</th>
+		<th>Region</th>
+		<th>Type</th>
+		<th>More Details</th>
 	</tr>
 {% for x in output %}
 	<tr>
@@ -49,6 +54,12 @@
 		<td>{{ x.4 }}</td>
 		<td>{{ x.5 }}</td>
 		<td>{{ x.6 }}</td>
+		<td>
+			<form method="post" action="selected/">
+		    {% csrf_token %}
+			<button class="selectButton" id="Selection" name="Selection" value={{ x.0 }} >More Details</button>
+			</form>
+		</td>
 	</tr>
 
 {% endfor %}

@@ -69,37 +69,30 @@ def search(request):
     return render(request, "search.html",context)
 
 def selected(request):
+    resultList = []
+    if request.method == "POST":
+        print(request.POST)
+        selection = request.POST.get('Selection','')
+        #print(selection)
+        test  = UniversityList.objects.get(uniqueid=selection)
+        test2 = UniDetails.objects.get(uniqueid=selection)
+        resultList = [str(test.uniqueid),str(test.university),str(test.rank_display),str(test.score),str(test.country),str(test.year),str(test.city),str(test.region),str(test.type),str(test2.logo), str(test2.link), str(test2.research_output), str(test2.student_faculty_ratio), str(test2.international_students), str(test2.size), str(test2.faculty_count)]
+        print(resultList)
+        context = {"output" : resultList,}
+        return render(request, "selected.html", context)
+
     return render(request, "selected.html")
 
-def tester(request):
-    res=""
-    ## Refill the model database
-    #UniversityList.objects.all().delete()
-    #
-    #with open('qs-world-university-rankings-2017-to-2022-V2.csv', newline='') as f:
-    #    reader = csv.reader(f, delimiter=",")
-    #    next(reader) # skip the header line
-    #    for row in reader:
-    #    	uList = UniversityList.objects.create(
-    #    	uniqueid = row[0],
-    #    	university = row[1],
-    #    	year = row[2],
-    #    	rank_display= row[3],
-    #    	score = row[4],
-    #    	country = row[6],
-    #    	city = row[7],
-    #    	region = row[8],
-    #    	type = row[10],
-    #    	)
-    #    	uList.save()
+def compare(request):
+    return render(request, "compare.html")
 
-    #Read ALL entries
-    objects = UniversityList.objects.all()
-    res ='Printing all University entries in the DB : <br>'
-    
-    for elt in objects:
-        res += str(elt.university)+"<br>"
-    ##Read a specific entry:
-    
+def tester(request):
+    res=''
+
+    ##Read ALL entries
+    #objects = UniversityList.objects.all()
+    #res ='Printing all University entries in the DB : <br>'
+    #for elt in objects:
+    #    res += str(elt.university)+"<br>"    
 
     return HttpResponse(res)
