@@ -19,7 +19,7 @@
 	<!-- Form for User entry to 'Search' through games list -->
 <form method="post">
 	<br>
-
+    {% csrf_token %}
 	<label for="criteria">Enter your search criteria: </label>
 	<input type="text" id="criteria" name="criteria" value = {{criteria}}>
 
