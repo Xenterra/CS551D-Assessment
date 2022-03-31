@@ -1,10 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from django.template import loader
-import psycopg2
 import csv
 import os
-from psycopg2 import Error
 from assessment.data.models import TestTable, UniversityList, UniDetails
 from django.db import connection
 
