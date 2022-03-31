@@ -6,21 +6,74 @@ import csv
 import os
 from psycopg2 import Error
 from assessment.data.models import TestTable, UniversityList, UniDetails
+from django.db import connection
 
 # Create your views here.
 def index(request):
     return render(request, "index.html")
 
 def search(request):
+    resultList = []
     if request.method == "POST":
-        print("POST TEST")
-        return render(request, "search.html")
-    return render(request, "search.html")
+        #print(request.POST)
+        crit = request.POST.get('criteria','')
+        sear = request.POST.get('search','')
+        #print(crit, sear)
+        res = ""
+        newValue = []
+        context = { }
+        if sear == "university":
+            for x in UniversityList.objects.filter(university=crit):
+                print(x.uniqueid , x.university)
+                newValue = [str(x.uniqueid) , str(x.university), str(x.score),str(x.country),str(x.city),str(x.region),str(x.type)]
+                resultList.append(newValue)
+                context = {
+                    "output" : resultList,
+                }
+        elif sear == "rank_display":
+            for x in UniversityList.objects.filter(rank_display=crit):
+                print(x.uniqueid , x.university)
+                newValue = [str(x.uniqueid) , str(x.university), str(x.score),str(x.country),str(x.city),str(x.region),str(x.type)]
+                resultList.append(newValue)
+                context = {
+                    "output" : resultList,
+                }
+        elif sear == "country":
+            for x in UniversityList.objects.filter(country=crit):
+                print(x.uniqueid , x.university)
+                newValue = [str(x.uniqueid) , str(x.university), str(x.score),str(x.country),str(x.city),str(x.region),str(x.type)]
+                resultList.append(newValue)
+                context = {
+                    "output" : resultList,
+                }
+        elif sear == "region":
+            for x in UniversityList.objects.filter(region=crit):
+                print(x.uniqueid , x.university)
+                newValue = [str(x.uniqueid) , str(x.university), str(x.score),str(x.country),str(x.city),str(x.region),str(x.type)]
+                resultList.append(newValue)
+                context = {
+                    "output" : resultList,
+                }
+        elif sear == "score":
+            for x in UniversityList.objects.filter(score=crit):
+                print(x.uniqueid , x.university)
+                newValue = [str(x.uniqueid) , str(x.university), str(x.score),str(x.country),str(x.city),str(x.region),str(x.type)]
+                resultList.append(newValue)
+                context = {
+                    "output" : resultList,
+                }
+        print(res)
+        return render(request, "search.html", context)
+    print(request.GET)
+    context = {"output" : resultList,}
+    return render(request, "search.html",context)
 
 def selected(request):
     return render(request, "selected.html")
 
 def tester(request):
+    res=""
+    ## Refill the model database
     #UniversityList.objects.all().delete()
     #
     #with open('qs-world-university-rankings-2017-to-2022-V2.csv', newline='') as f:
@@ -39,16 +92,14 @@ def tester(request):
     #    	type = row[10],
     #    	)
     #    	uList.save()
-    res=""
+
     #Read ALL entries
     objects = UniversityList.objects.all()
-    res ='Printing all Dreamreal entries in the DB : <br>'
+    res ='Printing all University entries in the DB : <br>'
     
     for elt in objects:
         res += str(elt.university)+"<br>"
     ##Read a specific entry:
-    #sorex = UniversityList.objects.get(uniqueid = "3")
-    #res += 'Printing One entry <br>'
-    #res += sorex.university
+    
 
     return HttpResponse(res)
