@@ -16,6 +16,88 @@
 <th><a href="/compare">Compare University</a></th>
 </tr></table>
 
+<form action = "" method = "POST">
+    {% csrf_token %}
+    <label for="uni1">Enter the number for University number 1: </label>
+    <input id="uni1" type="text" name="uni1">
+	<br><br>
+	<label for="uni2">Enter the number for University number 2: </label>
+    <input id="uni2" type="text" name="uni2">
+	<br><br>
+    <input type="submit" value="Compare">
+</form>
+
+			{% for x in lock %}
+
+<table>
+	<tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Score</th>
+		<th>Country</th>
+		<th>City</th>
+		<th>Region</th>
+		<th>Type</th>
+		<th>More Details</th>
+	</tr>
+	<tr>
+		<td>{{ output1.0 }}</td>
+		<td>{{ output1.1 }}</td>
+		<td>{{ output1.2 }}</td>
+		<td>{{ output1.3 }}</td>
+		<td>{{ output1.4 }}</td>
+		<td>{{ output1.5 }}</td>
+		<td>{{ output1.6 }}</td>
+		<td>{{ output1.7 }}</td>
+		<td>{{ output1.8 }}</td>
+		<td>{{ output1.11 }}</td>
+		<td>{{ output1.12 }}</td>
+		<td>{{ output1.13 }}</td>
+		<td>{{ output1.14 }}</td>
+		<td>{{ output1.15 }}</td>
+		<td>
+			<form method="post" action="/search/selected/">
+		    {% csrf_token %}
+			<button class="selectButton" id="Selection" name="Selection" value={{ output1.0 }} >More Details</button>
+			</form>
+		</td>
+
+	</tr>
+<br>
+	<tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Score</th>
+		<th>Country</th>
+		<th>City</th>
+		<th>Region</th>
+		<th>Type</th>
+		<th>More Details</th>
+	</tr>
+	<tr>
+		<td>{{ output2.0 }}</td>
+		<td>{{ output2.1 }}</td>
+		<td>{{ output2.2 }}</td>
+		<td>{{ output2.3 }}</td>
+		<td>{{ output2.4 }}</td>
+		<td>{{ output2.5 }}</td>
+		<td>{{ output2.6 }}</td>
+		<td>{{ output2.7 }}</td>
+		<td>{{ output2.8 }}</td>
+		<td>{{ output2.11 }}</td>
+		<td>{{ output2.12 }}</td>
+		<td>{{ output2.13 }}</td>
+		<td>{{ output2.14 }}</td>
+		<td>{{ output2.15 }}</td>
+		<td>
+			<form method="post" action="/search/selected/">
+		    {% csrf_token %}
+			<button class="selectButton" id="Selection" name="Selection" value={{ output2.0 }} >More Details</button>
+			</form>
+		</td>
+	</tr>
+</table>
+{% endfor %}
 
 
 </body></html>

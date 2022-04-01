@@ -72,9 +72,9 @@ def selected(request):
         print(request.POST)
         selection = request.POST.get('Selection','')
         #print(selection)
-        test  = UniversityList.objects.get(uniqueid=selection)
-        test2 = UniDetails.objects.get(uniqueid=selection)
-        resultList = [str(test.uniqueid),str(test.university),str(test.rank_display),str(test.score),str(test.country),str(test.year),str(test.city),str(test.region),str(test.type),str(test2.logo), str(test2.link), str(test2.research_output), str(test2.student_faculty_ratio), str(test2.international_students), str(test2.size), str(test2.faculty_count)]
+        dataPull  = UniversityList.objects.get(uniqueid=selection)
+        dataPull2 = UniDetails.objects.get(uniqueid=selection)
+        resultList = [str(dataPull.uniqueid),str(dataPull.university),str(dataPull.rank_display),str(dataPull.score),str(dataPull.country),str(dataPull.year),str(dataPull.city),str(dataPull.region),str(dataPull.type),str(dataPull2.logo), str(dataPull2.link), str(dataPull2.research_output), str(dataPull2.student_faculty_ratio), str(dataPull2.international_students), str(dataPull2.size), str(dataPull2.faculty_count)]
         print(resultList)
         context = {"output" : resultList,}
         return render(request, "selected.html", context)
@@ -82,6 +82,24 @@ def selected(request):
     return render(request, "selected.html")
 
 def compare(request):
+    if request.method == "POST":
+        uni1 = request.POST.get('uni1','')
+        uni2 = request.POST.get('uni2','')
+        if (uni1 != "" and uni2 != ""):
+            dataPull  = UniversityList.objects.get(uniqueid=uni1)
+            dataPull2 = UniDetails.objects.get(uniqueid=uni1)
+            resultList1 = [str(dataPull.uniqueid),str(dataPull.university),str(dataPull.rank_display),str(dataPull.score),str(dataPull.country),str(dataPull.year),str(dataPull.city),str(dataPull.region),str(dataPull.type),str(dataPull2.logo), str(dataPull2.link), str(dataPull2.research_output), str(dataPull2.student_faculty_ratio), str(dataPull2.international_students), str(dataPull2.size), str(dataPull2.faculty_count)]
+            dataPull  = UniversityList.objects.get(uniqueid=uni2)
+            dataPull2 = UniDetails.objects.get(uniqueid=uni2)
+            resultList2 = [str(dataPull.uniqueid),str(dataPull.university),str(dataPull.rank_display),str(dataPull.score),str(dataPull.country),str(dataPull.year),str(dataPull.city),str(dataPull.region),str(dataPull.type),str(dataPull2.logo), str(dataPull2.link), str(dataPull2.research_output), str(dataPull2.student_faculty_ratio), str(dataPull2.international_students), str(dataPull2.size), str(dataPull2.faculty_count)]
+            context = {
+                "output1" : resultList1,
+                "output2" : resultList2,
+                "lock"      : ["x"],
+            }
+            return render(request, "compare.html", context)
+        else:
+            return render(request, "compare.html")
     return render(request, "compare.html")
 
 def tester(request):
