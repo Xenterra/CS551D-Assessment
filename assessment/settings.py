@@ -47,6 +47,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'assessment.urls'
@@ -123,5 +124,7 @@ STATICFILES_DIRS=[
     os.path.join(BASE_DIR, 'static'),
     os.path.join(BASE_DIR, 'assessment/static')
 ]
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 print(STATIC_ROOT)
