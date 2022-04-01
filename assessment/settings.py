@@ -124,7 +124,6 @@ STATICFILES_DIRS=[
     os.path.join(BASE_DIR, 'static'),
     os.path.join(BASE_DIR, 'assessment/static')
 ]
-
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 print(STATIC_ROOT)
