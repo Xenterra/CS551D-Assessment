@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block content %}
+
 <html>
 	<!-- Basic In-Line stylesheet -->
-{% block content %}
 <head>
 	<title>HomePage</title>
 
@@ -24,8 +25,6 @@
 	</style>
 </head>
 	<body>
-		<h2>Click Here</h2>
-
 		<table><tr>
 			<th><a href="/">Home</a></th>
 			<th></th>
@@ -36,12 +35,12 @@
 		</table>
 
 <br><br>
-{% endblock  %}
 <form action = "" method = "POST">
 	    {% csrf_token %}
 <input type="submit" value="Get All Universities">
 </form>
 <table>
+{% for x in lock %}
 	<tr>
 		<th>ID</th>
 		<th>Name</th>
@@ -59,8 +58,9 @@
 		<th>Faculty Count</th>
 		<th>More...</th>
 	</tr>
-{% for x in output1 %}
+{% endfor %}
 
+{% for x in output1 %}
 	<tr>
 		<td>{{ x.0 }}</td>
 		<td>{{ x.1 }}</td>
@@ -88,3 +88,4 @@
 </table>
 </body>
 </html>
+{% endblock  %}

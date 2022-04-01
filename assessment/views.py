@@ -26,7 +26,8 @@ def index(request):
 
         print(finalList[0])
         print(finalList[1])
-        context = { "output1"   : finalList,}
+        context = { "output1"   : finalList,
+                    "lock"      : ["x"],}
 
         return render(request, "index.html", context)
     return render(request, "index.html")

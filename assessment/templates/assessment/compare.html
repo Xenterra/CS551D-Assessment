@@ -1,9 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
 <html>
 	<!-- Basic In-Line stylesheet -->
+<head>
+	<title>HomePage</title>
+
 	<style>
 		a:link, a:visited {
   		background-color: white;
-  		color: black;
+ 		color: black;
   		border: 2px solid coral;
   		padding: 10px 20px;
   		text-align: center;
@@ -14,7 +21,7 @@
 		a:hover, a:active {
   		background-color: SlateBlue;
   		color: white;
-  		}
+		}
 	</style>
 <head><title>Uni-Page</title>
 </head>
@@ -119,6 +126,5 @@
 	</tr>
 </table>
 {% endfor %}
-
-
 </body></html>
+{% endblock  %}
