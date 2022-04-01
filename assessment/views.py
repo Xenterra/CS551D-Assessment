@@ -8,6 +8,27 @@ from django.db import connection
 
 # Create your views here.
 def index(request):
+    if request.method == "POST":
+        resultList1=[]
+        resultList2=[]
+        finalList=[]
+        count=[]
+        for x in UniversityList.objects.all():
+            newValue1 = [str(x.uniqueid),str(x.university),str(x.rank_display),str(x.score),str(x.country),str(x.year),str(x.city),str(x.region),str(x.type)]
+            resultList1.append(newValue1)
+            count.append(int(x.uniqueid))
+        for y in UniDetails.objects.all():
+            newValue2 = [str(y.logo), str(y.link), str(y.research_output), str(y.student_faculty_ratio), str(y.international_students), str(y.size), str(y.faculty_count)]
+            resultList2.append(newValue2)
+
+        for z in count:
+            finalList.append(resultList1[z-1]+resultList2[z-1])
+
+        print(finalList[0])
+        print(finalList[1])
+        context = { "output1"   : finalList,}
+
+        return render(request, "index.html", context)
     return render(request, "index.html")
 
 def search(request):
@@ -75,7 +96,7 @@ def selected(request):
         dataPull  = UniversityList.objects.get(uniqueid=selection)
         dataPull2 = UniDetails.objects.get(uniqueid=selection)
         resultList = [str(dataPull.uniqueid),str(dataPull.university),str(dataPull.rank_display),str(dataPull.score),str(dataPull.country),str(dataPull.year),str(dataPull.city),str(dataPull.region),str(dataPull.type),str(dataPull2.logo), str(dataPull2.link), str(dataPull2.research_output), str(dataPull2.student_faculty_ratio), str(dataPull2.international_students), str(dataPull2.size), str(dataPull2.faculty_count)]
-        print(resultList)
+        #print(resultList)
         context = {"output" : resultList,}
         return render(request, "selected.html", context)
 
