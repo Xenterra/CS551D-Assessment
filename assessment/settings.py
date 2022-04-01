@@ -26,7 +26,7 @@ SECRET_KEY = '@yn^@m0to42yasd-l@3g*us!02s-9x8q%bwva@18s=(bo+g2^r'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['plazajason-telexvelvet-2500.codio-box.uk', 'secret-plateau-57057.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['plazajason-telexvelvet-2500.codio-box.uk', 'secret-plateau-57057.herokuapp.com', 'localhost', '127.0.0.1']
 
 # Application definition
 INSTALLED_APPS = [
@@ -118,4 +118,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'assessment')
+STATICFILES_DIRS=[
+    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'assessment/static')
+]
+
+print(STATIC_ROOT)

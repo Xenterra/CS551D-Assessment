@@ -1,0 +1,35 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% block head %}
+<head>
+     <meta charset="UTF-8">
+    <title>Univeristy rankings</title>
+    <link rel="stylesheet" href="{% static 'assessment/styles.css' %}">
+</head>
+{% endblock %}
+
+
+<body>
+
+
+    {% block nav %}
+
+        <nav class="nav-test">
+            <a href="/"><img src="{% static 'assessment/logi.jpeg' %}"></a>
+
+            <div class="text-box">
+                <h1>Welcome to World University Rankings.</h1>
+                <p>Discover the world’s top Universities. Explore the World University Rankings® 2022.</p>
+
+            </div>
+
+        </nav>
+    {% endblock %}
+{% block content %}
+
+{% endblock %}
+
+</body>
+</html>

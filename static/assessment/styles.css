@@ -1,0 +1,55 @@
+nav {
+display: flex;
+padding: 2% 6%;
+justify-content: space-between;
+align-items: center;
+margin-bottom:20px;
+box-shadow: 0 4px 4px 4px  coral;
+}
+
+nav img{
+    width: 250px;
+    height: 250px;
+    image-align: left;
+}
+
+body{
+background-color: SmokeWhite;
+background-size:;
+}
+
+nav{
+background-color: LightGray;
+display:flex;
+flex-direction: row;
+justify-content: space-between;
+color: #141414;
+padding:10px;
+height:250px;
+
+}
+
+.text-box{
+    width: 40%;
+    color: black;
+    text-align: center;
+    font-family: cambria;
+    font-size: 20px;
+    margin-right:20%;
+}
+
+.hero-btn{
+     color: white;
+     text-decoration:none;
+     border: 1px solid white;
+     padding: 12px 34px;
+     font-size: 13px;
+     background: transparent;
+     cursor: pointer;
+ }
+
+.hero-btn:hover{
+     border: 1px  coral;
+     background: LightGray;
+     transition: 1s;
+}
